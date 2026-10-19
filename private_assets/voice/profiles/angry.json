@@ -1,0 +1,25 @@
+{
+  "transcript": "This is a nightmare. This is a nightmare and I can't wake up!",
+  "source": "https://giphy.com/clips/southpark-south-park-episode-3-season-14-c0s60P6fuuJfcpk1jT",
+  "source_title": "This Is A Nightmare",
+  "episode": "Clips from South Park, Season 14, Episode 3, Medicinal Fried Chicken",
+  "selection": {
+    "start_seconds": 0.0,
+    "end_seconds": 4.05,
+    "duration_seconds": 4.05
+  },
+  "processing": {
+    "sample_rate": 24000,
+    "channels": 1,
+    "gain_db": 8.204,
+    "peak_normalization": 0.8,
+    "pitch_shift": false,
+    "denoise": false
+  },
+  "kind": "third_party_character_reference",
+  "sha256": "c117a8ef546d6f5890b722fa66f9519f927fd0e7c84c77d41f4fb819ef95fe26",
+  "original_file_sha256": "c6119531bd3ae9ce112a3f6072bb575136209cfcb510ff801346511c649696c6",
+  "rights_notice": "Unofficial noncommercial fan research demo. South Park / Eric Cartman and original performances and recordings belong to their respective rights holders. No affiliation, endorsement, or third-party redistribution/voice-cloning permission is claimed. Not covered by the framework MIT license. See ASSET-RIGHTS.md.",
+  "rights_status": "No rightsholder redistribution or voice-cloning authorization obtained",
+  "intended_use": "noncommercial fan research; not a license grant"
+}

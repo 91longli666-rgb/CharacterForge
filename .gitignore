@@ -1,0 +1,17 @@
+.git/
+.local/
+.tools/
+.venv*/
+cache/
+models/
+runtime/text/models/
+runtime/text/cache/
+data/
+__pycache__/
+*.pyc
+*.sqlite*
+*.db
+config.local.json
+*.log
+*.zip
+.env*

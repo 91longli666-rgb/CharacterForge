@@ -1,0 +1,3 @@
+# P1 Python code uses the standard library only; no new pip packages required.
+# External local runtime: official portable Ollama v0.40.4 (not a Python dependency).
+# Model versions/digests and trial settings are recorded in docs/p1-checkpoint.md.

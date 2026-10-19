@@ -1,0 +1,5 @@
+{
+  "gpu_layers": 16,
+  "num_batch": 128,
+  "min_free_voice_mib": 1024
+}

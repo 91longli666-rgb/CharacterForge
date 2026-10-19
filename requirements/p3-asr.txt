@@ -1,0 +1,6 @@
+# Existing .venv-voice packages reused in a separate CPU recognition process.
+# Model is local-only Systran/faster-whisper-small revision 536b0662742c02347bc0e980a01041f333bce120.
+faster-whisper==1.2.1
+ctranslate2==4.8.3
+av==16.1.0
+numpy==2.2.6

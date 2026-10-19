@@ -1,0 +1,11 @@
+{
+  "transcript": "Respect my authoritah.",
+  "source": "https://giphy.com/clips/southpark-season-2-episode-4-south-park-GaCg0GbDufHnYvRTCQ",
+  "processing": "mono24k PCM16; peak normalization only; no pitch change",
+  "kind": "third_party_character_reference",
+  "sha256": "e594ec9fb86c26b2d554238b5bce9cf82396d9b6c7661e68a373917ab882489c",
+  "original_file_sha256": "491d4743eb6ef5da651c7341881295c690d0ecaede8121fda7b4cdc56417a351",
+  "rights_notice": "Unofficial noncommercial fan research demo. South Park / Eric Cartman and original performances and recordings belong to their respective rights holders. No affiliation, endorsement, or third-party redistribution/voice-cloning permission is claimed. Not covered by the framework MIT license. See ASSET-RIGHTS.md.",
+  "rights_status": "No rightsholder redistribution or voice-cloning authorization obtained",
+  "intended_use": "noncommercial fan research; not a license grant"
+}

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CharacterForge · 角色舞台</title><link rel="stylesheet" href="/stage.css">
+<main class="app-shell">
+<header class="topbar"><a class="brand" href="/" aria-label="CharacterForge首页"><span>CharacterForge</span></a><div class="header-actions"><span id="stage-connection" class="connection">本地运行</span><button id="clear" class="quiet">新对话</button><button id="stage-history" class="quiet">对话与记忆</button><button id="stage-settings" class="icon-button" aria-label="打开设置"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6H20M4 12H20M4 18H20"/><circle cx="9" cy="6" r="2" fill="white"/><circle cx="15" cy="12" r="2" fill="white"/><circle cx="9" cy="18" r="2" fill="white"/></svg></button></div></header>
+<section id="stage" class="character-stage" data-mouth="closed" data-phase="idle" data-mood="normal" aria-label="角色舞台">
+ <div class="stage-heading"><span class="eyebrow">本地对话</span><span id="stage-model" class="model-pill">本地角色</span></div>
+ <div class="stage-copy"><p class="eyebrow"></p><h1 id="stage-name">Cartman</h1><p id="stage-description">聊点什么。接下来的表情，由对话决定。</p></div>
+ <div class="portrait-space"><div class="portrait-disc"></div><div class="portrait-ring"></div><div id="avatar-mount" role="img" aria-label="动态角色头像"><div class="avatar-fallback">cf.</div></div><span class="orbit-dot"></span></div>
+ <div class="stage-status"><span id="stage-phase">等你开口</span><span id="stage-mood" class="mood-pill">平常</span></div>
+ <div id="stage-warning" role="alert" hidden></div>
+ <div class="stage-bottom"><span class="status-dot"></span><span id="stage-hint">本机处理 · 录音仅在本轮使用</span><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+<section id="caption-card" class="caption-card" aria-label="语音字幕"><div class="caption-top"><span id="caption-label">开始一段对话</span><span id="caption-timing">字幕进度估算 · 全文见对话</span></div><p id="stage-caption">想聊点什么？</p><div class="caption-track"><span id="caption-progress"></span></div></section>
+<section class="composer" aria-label="开始聊天"><div class="mic-toolbar"><button class="primary mic-primary" id="mic-native-start" type="button">开始说话</button><button id="mic-finish" type="button" hidden>结束并发送</button><button id="mic-interrupt" type="button">打断并说话</button><button id="mic-cancel" type="button" disabled>取消录音/识别</button></div><p id="mic-status" role="status">麦克风未启用。</p><p id="mic-error" role="alert"></p><p id="mic-transcript"></p><form id="form"><textarea id="input" maxlength="6000" rows="1" placeholder="输入英语，或者点麦克风开始聊…" aria-label="聊天内容"></textarea><button class="send-button" id="send" disabled>发送</button><button type="button" id="stop" hidden>停止生成</button></form><div class="composer-footer"><span id="status" role="status">正在连接本地模型…</span><span>Enter 发送 · Shift + Enter 换行</span></div><div id="metrics" role="status"></div><div id="turn-metrics" role="status"></div></section>
+<footer class="app-footer"><span>CharacterForge · 本地运行</span><button id="shutdown" class="text-button">退出并释放显存</button></footer>
+</main>
+<dialog id="settings-dialog" aria-labelledby="settings-title"><div class="drawer-top"><div><span class="eyebrow">MAKE IT YOURS</span><h2 id="settings-title">偏好设置</h2></div><button id="settings-close" class="icon-button" aria-label="关闭设置">×</button></div><div class="drawer-scroll">
+ <section class="settings-section"><h3>角色与模型</h3><label for="mode">对话模型</label><select id="mode"><option value="adapter">作者 Cartman 3B</option><option value="roast8b">嘴毒加强 · 本地8B（试验）</option><option value="base">3B基础模型（对照）</option></select><p class="help">切换会开启新对话，旧记录保留。已有模型按需加载，首次可能较慢。</p><label for="reply-style">对话设置</label><select id="reply-style"><option value="character">正常对话 · 强化人格</option><option value="original">原版提示（对照）</option><option value="spoken">简短（可选）</option></select><label for="emotion-mode">情绪控制</label><select id="emotion-mode"><option value="auto">自动判断语气（默认）</option><option value="manual">手动覆盖（对照）</option></select><p id="character-status" role="status"></p><label for="voice-profile">本轮语气</label><select id="voice-profile"><option value="sarcastic">嘲讽</option><option value="angry">暴怒 · v2试验</option><option value="normal">普通（对照）</option></select><p class="help">自动模式根据内容与上下文选择语气。表情是动画示意，暴怒声线仍保持现有版本。</p></section>
+ <section class="settings-section"><h3>声音与字幕</h3><label class="toggle"><input id="voice-auto" type="checkbox" checked disabled>朗读回复</label><label class="toggle"><input id="voice-stream" type="checkbox" checked>连续流式试听（取消勾选恢复整段播放）</label><label for="output-volume">播放音量 <output id="volume-label">100%</output></label><input id="output-volume" type="range" min="0" max="100" value="100"><label class="toggle"><input id="captions-enabled" type="checkbox" checked>显示语音字幕</label><label class="toggle"><input id="motion-enabled" type="checkbox" checked>角色动作与表情</label><p class="help">字幕按实际播放进度估算，尚未逐词对齐；口型按语音强弱和停顿切换，尚未识别音素。系统“减少动态效果”也会生效。</p><div class="toolbar"><button id="voice-start">启动声音</button><button id="voice-stop" disabled>停止语音</button><button id="voice-close" disabled>关闭声音</button></div><p id="voice-reference"></p><p id="voice-status" role="status"></p><p id="voice-error" role="alert"></p><p id="voice-metrics" role="status"></p><audio id="voice-player" controls hidden preload="none" aria-label="回复语音播放器"></audio><a class="subtle-link" href="/anger-lab" target="_blank" rel="noopener">暴怒参考对照试听 ↗</a></section>
+ <section class="settings-section"><h3>麦克风与设备</h3><label for="input-device">本机麦克风</label><select id="input-device"><option value="-1">Windows默认麦克风</option></select><label for="output-device">播放设备</label><select id="output-device"><option value="">系统默认输出</option></select><button id="device-refresh" class="quiet">刷新设备</button><p id="device-status" class="help" role="status">设备不会因打开设置而开始录音。</p><label class="toggle"><input id="mic-endpoint" type="checkbox" checked>本机录音：说完停顿约0.9秒后自动结束</label><label class="toggle"><input id="mic-auto" type="checkbox" checked>识别后自动发送并朗读</label><p class="help">每轮显式开始，最长30秒；10秒未发言自动关闭。自动停顿仅用于本机录音。</p><button id="mic-start" type="button">浏览器录音（备用）</button><label for="mic-file">或选择英语录音</label><input id="mic-file" type="file" accept="audio/*" aria-label="英语录音文件"><p class="help">浏览器备用需麦克风权限，并使用浏览器默认输入。文件最长30秒、12MB。</p></section>
+ <section class="settings-section"><h3>本地模块</h3><p id="demo-status" role="status">正在准备本地模块…</p><button id="demo-retry" type="button">准备全部模块 / 重试</button><p class="help">退出页面不等于模型退出；需要释放显存时使用主页面的退出按钮。</p></section>
+</div></dialog>
+<dialog id="history-dialog" aria-labelledby="history-title"><div class="drawer-top"><div><span class="eyebrow">THE CONVERSATION CONTINUES</span><h2 id="history-title">对话与记忆</h2></div><button id="history-close" class="icon-button" aria-label="关闭对话与记忆">×</button></div><div class="drawer-scroll">
+ <section class="settings-section"><h3>当前对话</h3><div id="chat" aria-live="polite"><div class="message empty">从一句英语开始。</div></div></section>
+ <section class="settings-section"><h3>近期对话</h3><select id="history-list" aria-label="已保存的对话"><option value="">选择已保存的对话</option></select><div class="toolbar"><button id="history-load">载入</button><button id="history-save">保存当前</button><button id="history-delete">删除此记录</button><button id="history-export">导出文字</button></div><label class="toggle"><input id="history-enabled" type="checkbox" checked>自动保存近期对话到D盘</label><p id="history-status" role="status">只保存文字与会话设置；录音和语音不保存在会话中。</p></section>
+ <section class="settings-section"><h3>长期记忆</h3><label class="toggle"><input id="memory-enabled" type="checkbox" checked>使用明确保存的长期记忆</label><p class="help">例如：Remember: my favorite snack is pretzels. 普通闲聊不会自动提取事实。</p><div class="memory-edit"><input id="memory-key" maxlength="40" placeholder="标签，例如 favorite_snack" aria-label="记忆标签"><input id="memory-value" maxlength="180" placeholder="事实，例如 pretzels" aria-label="记忆内容"></div><div class="toolbar"><button id="memory-save">明确记住</button><button id="memory-refresh">刷新列表</button><button id="memory-clear">清空长期记忆并新聊</button></div><div id="memory-list"></div><p id="memory-status" role="status"></p></section>
+ <p class="help">模型与角色参考由本机设置决定；私人素材留在本机。作者3B来源：<a href="https://huggingface.co/Chun0927/eric_cartman_llama3.2_3b" target="_blank" rel="noreferrer">Chun0927 / Cartman LoRA</a>。</p>
+</div></dialog>
+<script src="/speech-motion.js"></script><script src="/continuous-audio.js"></script><script>
+
+const token='__LOCAL_TOKEN__';
+const chat=document.querySelector('#chat'),input=document.querySelector('#input'),send=document.querySelector('#send'),stop=document.querySelector('#stop'),statusEl=document.querySelector('#status'),metrics=document.querySelector('#metrics'),mode=document.querySelector('#mode'),clearButton=document.querySelector('#clear'),shutdownButton=document.querySelector('#shutdown');
+const voiceStart=document.querySelector('#voice-start'),voiceAuto=document.querySelector('#voice-auto'),voiceStop=document.querySelector('#voice-stop'),voiceClose=document.querySelector('#voice-close'),voiceStatus=document.querySelector('#voice-status'),voiceError=document.querySelector('#voice-error'),player=document.querySelector('#voice-player');
+const voiceReference=document.querySelector('#voice-reference'),voiceProfile=document.querySelector('#voice-profile'),replyStyle=document.querySelector('#reply-style'),voiceMetrics=document.querySelector('#voice-metrics');
+const profileLabels={normal:'普通',sarcastic:'嘲讽',angry:'暴怒'};
+let history=[],busy=false,ready=false,closing=false,serverBusy=false,microphoneBusy=false,historyBusy=false,characterBusy=false;
+let voiceReady=false,voiceBusy=false,voiceStarting=false,voiceClosing=false,voiceServicePresent=false,voiceController=null,voiceEpoch=0,voiceURL=null,voiceStopPromise=Promise.resolve();
+let voiceTiming=null;
+let pcmPlayback=null;
+const voiceStream=document.querySelector('#voice-stream');
+let streamSupported=true;
+try{const saved=localStorage.getItem('characterforge.continuous.v1');if(saved!==null)voiceStream.checked=saved==='1';}catch(error){}
+const turnMetrics=document.querySelector('#turn-metrics');let pendingMicTiming=null;
+window.characterForgeTiming={arm:(started,source)=>{pendingMicTiming={started,source};}};
+function measuredPlayback(timing,scheduled=false){
+  if(!timing)return;const seconds=(performance.now()-timing.started)/1000+(scheduled ? .06 : 0);
+  turnMetrics.textContent=`本轮${timing.source==='mic'?'确认收音结束':timing.source==='recording'?'提交录音':'发送文字'}至浏览器${scheduled?'播放调度':'开始播放'} ${seconds.toFixed(2)} 秒`;
+  turnMetrics.dataset.measurement=JSON.stringify({source:timing.source,seconds,endpoint:scheduled?'AudioContext scheduled start':'HTMLAudioElement playing',physical_speaker_measured:false});
+}
+let chatEpoch=0,chatController=null;
+const readButtons=new Set();
+
+async function post(path,data={},options={}){
+  return fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Local-Token':token},body:JSON.stringify(data),...options});
+}
+async function responseError(response,fallback){
+  try{const data=await response.json();return data.error||fallback;}catch(error){return fallback;}
+}
+function voiceButtons(){
+  voiceStart.disabled=voiceReady||voiceStarting||voiceClosing||closing;
+  voiceStart.textContent=voiceReady?'声音已准备':voiceStarting?'正在启动声音…':'启动声音';
+  voiceAuto.disabled=!voiceReady||voiceClosing||closing;
+  voiceStream.disabled=!voiceReady||voiceClosing||closing||voiceBusy||!streamSupported;
+  voiceStop.disabled=closing||voiceClosing||(!voiceBusy&&!voiceController&&!voiceURL);
+  voiceClose.disabled=closing||voiceClosing||(!voiceServicePresent&&!voiceReady&&!voiceStarting);
+  voiceClose.textContent=voiceClosing?'正在关闭声音…':'关闭声音';
+  voiceProfile.disabled=voiceClosing||closing||busy||serverBusy||Boolean(window.characterForgeCharacter?.automatic());
+  for(const button of readButtons)button.disabled=!voiceReady||voiceBusy||voiceClosing||closing||microphoneBusy||!button.dataset.text;
+}
+function buttons(){
+  send.disabled=!ready||busy||serverBusy||microphoneBusy||characterBusy||closing;mode.disabled=busy||serverBusy||microphoneBusy||characterBusy||closing;replyStyle.disabled=busy||serverBusy||microphoneBusy||characterBusy||closing;clearButton.disabled=busy||microphoneBusy||characterBusy||closing;
+  stop.hidden=(!busy&&!serverBusy)||closing;shutdownButton.disabled=closing;input.disabled=closing||microphoneBusy||historyBusy;voiceButtons();window.characterForgeMic?.refresh();window.characterForgeHistory?.refresh();window.characterForgeCharacter?.refresh();
+}
+function bubble(role,text){
+  const div=document.createElement('div');div.className='message '+role;
+  const label=document.createElement('small');label.textContent=role==='user'?'你':mode.value==='roast8b'?'Cartman · 本地8B':mode.value==='base'?'基础模型':'Cartman · 作者3B';
+  const body=document.createElement('span');body.className='body';body.textContent=text;div.append(label,body);
+  let read=null;
+  if(role==='assistant'){
+    read=document.createElement('button');read.type='button';read.className='read-message';read.textContent='朗读这条';read.hidden=true;
+    read.onclick=()=>speak(read.dataset.text||'',null,read.dataset.profile||null);readButtons.add(read);div.append(read);
+  }
+  chat.append(div);chat.scrollTop=chat.scrollHeight;voiceButtons();return{body,read};
+}
+function releaseAudio(){
+  player.pause();player.removeAttribute('src');player.load();player.hidden=true;
+  if(voiceURL){URL.revokeObjectURL(voiceURL);voiceURL=null;}
+}
+function cancelVoice(message='语音已停止。'){
+  voiceEpoch+=1;
+  window.characterForgeStage?.stop();
+  pcmPlayback?.stop();pcmPlayback=null;
+  pendingMicTiming=null;turnMetrics.textContent='';delete turnMetrics.dataset.measurement;
+  if(voiceController){voiceController.abort();voiceController=null;}
+  releaseAudio();voiceBusy=false;voiceTiming=null;voiceMetrics.textContent='';delete voiceMetrics.dataset.streamProof;
+  voiceStopPromise=voiceStopPromise.catch(()=>{}).then(async()=>{
+    try{await post('/api/voice/stop',{},{signal:AbortSignal.timeout(5000)});}catch(error){/* A stopped or unavailable voice service does not affect text chat. */}
+  });
+  if(message)voiceStatus.textContent=message;
+  voiceButtons();return voiceStopPromise;
+}
+async function checkVoice(){
+  if(closing||voiceClosing)return;
+  const epoch=voiceEpoch;
+  try{
+    const response=await fetch('/api/voice/status');
+    if(!response.ok)throw Error(await responseError(response,'声音暂未准备，文字聊天仍可使用。'));
+    const state=await response.json();if(closing||voiceClosing||epoch!==voiceEpoch)return;
+    voiceReady=Boolean(state.ready);voiceServicePresent=state.info?.phase!=='not_started';
+    if(state.error){voiceStarting=false;voiceAuto.checked=false;voiceError.textContent='声音加载失败：'+state.error;voiceStatus.textContent='文字聊天仍可继续。';}
+    else if(voiceReady){
+      voiceStarting=false;
+      streamSupported=state.info?.continuous_stream_supported===true;if(!streamSupported)voiceStream.checked=false;
+      const profiles=Array.isArray(state.info?.voice_profiles)?state.info.voice_profiles:[];
+      if(profiles.length){
+        const available=new Set(profiles.map(profile=>profile.id));
+        for(const option of voiceProfile.options)option.disabled=!available.has(option.value);
+        if(!available.has(voiceProfile.value))voiceProfile.value=available.has(state.info.default_profile)?state.info.default_profile:'normal';
+      }
+      voiceReference.textContent=state.info?.is_character_voice===true?`当前参考：角色片段 · ${profileLabels[voiceProfile.value]}。`:state.info?.reference_kind==='synthetic_example'?'当前参考：本机合成示例声音。':'当前参考：本地私有录音。';
+      if(!voiceBusy&&!voiceController&&!voiceURL)voiceStatus.textContent='声音已准备。可勾选朗读回复，或点击某条回复的“朗读这条”。';
+    }else if(voiceStarting||state.busy||state.info?.phase==='loading'){voiceStatus.textContent='正在准备声音，请稍候；可以先继续文字聊天。';}
+    else if(!voiceServicePresent){voiceAuto.checked=false;voiceReference.textContent='当前参考：启动声音后查看。';if(!voiceURL)voiceStatus.textContent='声音尚未启动。点击启动后等待准备完成。';}
+    voiceButtons();
+  }catch(error){
+    if(closing||voiceClosing||epoch!==voiceEpoch)return;
+    voiceReady=false;voiceAuto.checked=false;voiceButtons();
+    if(voiceStarting){voiceError.textContent='暂时无法查看声音状态：'+error.message;}
+  }
+}
+voiceStart.onclick=async()=>{
+  if(voiceStarting||voiceReady||voiceClosing||closing)return;
+  voiceStarting=true;voiceServicePresent=true;voiceError.textContent='';voiceStatus.textContent='正在启动声音，请稍候；文字聊天不受影响。';voiceButtons();
+  try{
+    const response=await post('/api/voice/start');
+    if(!response.ok)throw Error(await responseError(response,'声音启动失败'));
+    await checkVoice();
+  }catch(error){voiceStarting=false;voiceError.textContent='声音启动失败：'+error.message;voiceStatus.textContent='文字聊天仍可使用。';voiceButtons();}
+};
+voiceAuto.onchange=()=>{if(!voiceAuto.checked)cancelVoice('已关闭自动朗读。');};
+voiceProfile.onchange=()=>{if(window.characterForgeCharacter?.automatic()){window.characterForgeCharacter.refresh();return;}voiceReference.textContent=`手动参考语气：${profileLabels[voiceProfile.value]}，效果待试听。`;cancelVoice('已切换手动参考语气，上一条语音已停止。');};
+voiceStop.onclick=()=>cancelVoice();
+voiceClose.onclick=async()=>{
+  if(voiceClosing||closing)return;
+  voiceClosing=true;voiceReady=false;voiceStarting=false;voiceAuto.checked=false;voiceError.textContent='';
+  await cancelVoice('正在关闭声音并释放占用；文字对话会保留。');voiceButtons();
+  try{
+    const response=await post('/api/voice/shutdown',{},{signal:AbortSignal.timeout(20000)});
+    if(!response.ok)throw Error(await responseError(response,'关闭声音失败'));
+    const deadline=Date.now()+20000;let offline=false;
+    while(Date.now()<deadline&&!closing){
+      const check=await fetch('/api/voice/status',{signal:AbortSignal.timeout(3000)});
+      if(!check.ok)throw Error(await responseError(check,'无法确认声音是否已关闭'));
+      const state=await check.json();
+      if(!state.ready&&state.info?.phase==='not_started'){offline=true;break;}
+      await new Promise(resolve=>setTimeout(resolve,350));
+    }
+    if(!offline&&!closing)throw Error('已发送关闭请求，声音服务仍在退出中，请稍后重试');
+    if(!closing){voiceServicePresent=false;voiceStatus.textContent='声音已关闭，文字聊天继续使用。需要时可重新启动声音。';}
+  }catch(error){if(!closing){voiceError.textContent='关闭声音遇到问题：'+error.message;voiceStatus.textContent='文字对话已保留，可以继续使用。';}}
+  finally{voiceClosing=false;voiceButtons();}
+};
+player.onplay=()=>{if(!closing&&voiceURL)voiceStatus.textContent='正在连续播放整条回复。';};
+player.onplaying=()=>{if(voiceTiming&&voiceTiming.epoch===voiceEpoch&&voiceTiming.firstAudioSeconds==null){voiceTiming.firstAudioSeconds=(performance.now()-voiceTiming.started)/1000;updateVoiceMetrics();measuredPlayback(voiceTiming.turn);}};
+player.onended=()=>{if(!closing&&voiceURL)voiceStatus.textContent='整条回复已播放结束，可完整重听。';};
+player.onerror=()=>{if(player.getAttribute('src')&&!closing)voiceError.textContent='音频无法播放；文字回复已保留。';};
+voiceStream.onchange=()=>{try{localStorage.setItem('characterforge.continuous.v1',voiceStream.checked?'1':'0');}catch(error){}cancelVoice('已切换播放方式；下一条回复使用所选方式。');};
+
+function updateVoiceMetrics(){
+  if(!voiceTiming)return;
+  const first=voiceTiming.firstAudioSeconds;
+  const duration=Number.isFinite(voiceTiming.audioSeconds)?` · 音频 ${voiceTiming.audioSeconds.toFixed(2)} 秒`:'';
+  voiceMetrics.textContent=(first==null?'正在准备完整语音':`语音阶段到播放 ${first.toFixed(2)} 秒`)+` · ${voiceTiming.cacheHit?'复用完整音频':'整段生成'} ${voiceTiming.generationSeconds.toFixed(2)} 秒`+duration;
+}
+function showVoiceAudio(blob){
+  releaseAudio();window.characterForgeStage?.waveform(blob);voiceURL=URL.createObjectURL(blob);player.src=voiceURL;player.hidden=false;
+}
+async function speak(text,turn=null,profileOverride=null){
+  if(closing||voiceClosing||!voiceReady)return;
+  const spoken=text.trim();if(!spoken)return;
+  const speakStarted=performance.now(),pendingStop=cancelVoice(''),epoch=voiceEpoch;
+  await pendingStop;
+  if(epoch!==voiceEpoch||closing||voiceClosing||!voiceReady)return;
+  voiceError.textContent='';
+  if(spoken.length>1000){
+    voiceStatus.textContent='这条文字已保留，尚未朗读。';
+    voiceError.textContent='回复超过单次语音的 1000 字符上限，可选简短模式或要求收束后重新提问。不会截掉后半段来播放。';
+    return;
+  }
+  const controller=new AbortController(),profile=profileOverride||voiceProfile.value;
+  window.characterForgeStage?.prepareVoice(spoken,profile);
+  voiceController=controller;voiceBusy=true;
+  voiceTiming={epoch,started:speakStarted,firstAudioSeconds:null,generationSeconds:0,audioSeconds:null,turn};
+  voiceStatus.textContent=voiceStream.checked?'正在准备连续语音，缓冲足够后开口…':'正在准备整条回复的声音，完成后一次说完…';updateVoiceMetrics();voiceButtons();
+  try{
+    if(voiceStream.checked&&window.CharacterForgePCM){
+      const pcm=new window.CharacterForgePCM({isCurrent:()=>epoch===voiceEpoch&&!closing,
+        onStart:()=>{if(epoch===voiceEpoch){const scheduled=(performance.now()-speakStarted)/1000+.06;if(voiceTiming)voiceTiming.firstAudioSeconds=scheduled;measuredPlayback(turn,true);window.characterForgeStage?.play({text:spoken,profile,position:()=>pcm.position(),duration:()=>voiceTiming?.audioSeconds,motion:pcm.motion});voiceStatus.textContent='正在连续流式播放本条回复。';voiceMetrics.textContent=`语音阶段到播放调度 ${scheduled.toFixed(2)} 秒 · 正在生成后续声音`; }},
+        onEnd:proof=>{if(epoch===voiceEpoch){window.characterForgeStage?.ended();voiceStatus.textContent='整条回复已连续播放结束，可完整重听。';voiceMetrics.textContent+=` · 缓冲断流 ${proof.underruns} 次`;voiceMetrics.dataset.streamProof=JSON.stringify(proof);}}
+      });pcmPlayback=pcm;
+      await pcm.ready;
+      const response=await post('/api/voice/stream',{text:spoken,profile},{signal:controller.signal});
+      if(!response.ok)throw Error(await responseError(response,'连续语音生成失败'));
+      const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='',done=false,completedBlob=null;
+      while(true){
+        const item=await reader.read();if(epoch!==voiceEpoch||controller.signal.aborted)throw new DOMException('已停止','AbortError');
+        buffer+=decoder.decode(item.value||new Uint8Array(),{stream:!item.done});if(buffer.length>16*1024*1024)throw Error('流式音频数据超过上限');
+        let position;while((position=buffer.indexOf('\n'))>=0){
+          const line=buffer.slice(0,position);buffer=buffer.slice(position+1);if(!line)continue;const event=JSON.parse(line);
+          if(event.type==='audio')pcm.push(event);
+          else if(event.type==='error')throw Error(event.error||'连续语音未完成');
+          else if(event.type==='done'){
+            const binary=atob(event.wav),bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+            completedBlob=new Blob([bytes],{type:'audio/wav'});
+            const detail=event.metrics||{};if(voiceTiming)voiceTiming.audioSeconds=Number(detail.audio_seconds)||null;voiceMetrics.textContent=`连续语音 · 首块 ${Number(detail.stream_first_chunk_seconds||0).toFixed(2)} 秒 · 音频 ${Number(detail.audio_seconds||0).toFixed(2)} 秒${detail.cache_hit?' · 完整音频复用':''}`;
+            pcm.done(detail.stream_samples);done=true;
+          }else throw Error('未知语音消息');
+        }
+        if(item.done)break;
+      }
+      if(!done)throw Error('连续语音连接提前结束');
+      const playback=await pcm.finished;if(pcmPlayback===pcm)pcmPlayback=null;
+      if(epoch===voiceEpoch&&!playback.cancelled)showVoiceAudio(completedBlob);
+      return;
+    }
+    const response=await post('/api/voice',{text:spoken,profile},{signal:controller.signal});
+    if(!response.ok)throw Error(await responseError(response,'语音生成失败'));
+    if(!(response.headers.get('Content-Type')||'').toLowerCase().startsWith('audio/wav'))throw Error('没有收到可播放的语音文件');
+    const blob=await response.blob();
+    if(epoch!==voiceEpoch||closing||controller.signal.aborted)throw new DOMException('已停止','AbortError');
+    if(!blob.size)throw Error('生成的语音文件为空');
+    let detail={};try{detail=JSON.parse(response.headers.get('X-Voice-Metrics')||'{}');}catch(error){/* Optional timing metadata does not affect playback. */}
+    const elapsed=Number(detail.synthesis_seconds??detail.elapsed_seconds);
+    voiceTiming.generationSeconds=Number.isFinite(elapsed)?elapsed:0;
+    voiceTiming.audioSeconds=Number.isFinite(detail.audio_seconds)?detail.audio_seconds:null;
+    voiceTiming.cacheHit=detail.cache_hit===true;
+    updateVoiceMetrics();showVoiceAudio(blob);voiceStatus.textContent='整条语音已准备好。';
+    try{await player.play();if(epoch===voiceEpoch&&!closing)voiceStatus.textContent='正在连续播放整条回复。';}
+    catch(error){if(epoch===voiceEpoch&&!closing)voiceStatus.textContent=player.error?'音频无法播放，文字回复已保留。':'整条语音已准备好，请点击播放器播放。';}
+  }catch(error){
+    if(epoch===voiceEpoch&&!closing&&error.name!=='AbortError'){
+      cancelVoice('');voiceError.textContent='语音生成失败：'+error.message+'。文字回复已保留。';voiceStatus.textContent='可以继续文字聊天，或稍后重试朗读。';
+    }
+  }finally{
+    if(epoch===voiceEpoch){voiceBusy=false;if(voiceController===controller)voiceController=null;voiceButtons();}
+  }
+}
+
+async function check(){
+  if(closing)return;
+  try{
+    const response=await fetch('/api/status',{signal:AbortSignal.timeout(5000)});const state=await response.json();ready=Boolean(state.ready);serverBusy=Boolean(state.generation?.busy);
+    if(state.error){statusEl.textContent='文字模型加载失败：'+state.error;}
+    else if(serverBusy){statusEl.textContent=(state.generation?.phase==='starting_8b'?'正在启动本地8B':'本机正在处理回答')+'，可以点击停止生成';}
+    else if(state.ready){statusEl.textContent='文字模型已就绪，可以聊天';statusEl.style.color='#80d7cb';}
+    buttons();
+  }catch(error){ready=false;buttons();statusEl.textContent='文字服务未连接，请重新启动试聊入口';}
+}
+const timer=setInterval(check,2000),voiceTimer=setInterval(checkVoice,3000);check();checkVoice();
+function resetConversation(){
+  cancelVoice('已开始新对话，之前的语音已停止。');history=[];window.characterForgeStage?.fresh();readButtons.clear();chat.replaceChildren();metrics.textContent='';input.focus();
+  window.characterForgeHistory?.fresh();
+  window.characterForgeCharacter?.fresh();
+}
+clearButton.onclick=resetConversation;
+mode.onchange=()=>{resetConversation();metrics.textContent='已开始新的对照对话';};
+document.querySelector('#form').onsubmit=async event=>{
+  event.preventDefault();const text=input.value.trim();if(!text||busy||serverBusy||microphoneBusy||historyBusy||characterBusy||!ready||closing)return;
+  window.characterForgeStage?.thinking();
+  const roundTiming=pendingMicTiming||{started:performance.now(),source:'text'};pendingMicTiming=null;turnMetrics.textContent='';delete turnMetrics.dataset.measurement;
+  cancelVoice('');const voiceEpochAtTurn=voiceEpoch;chat.querySelector('.empty')?.remove();bubble('user',text);input.value='';history.push({role:'user',content:text});busy=true;buttons();window.characterForgeStage?.thinking();
+  const message=bubble('assistant','');metrics.textContent='正在回答…';let answer='',completed=false,cancelled=false,turnProfile=voiceProfile.value;
+  const turn=++chatEpoch,controller=new AbortController();chatController=controller;
+  try{
+    const response=await post('/api/chat',{messages:history.slice(-15),mode:mode.value,reply_style:replyStyle.value,delivery:voiceProfile.value,...(window.characterForgeCharacter?.request()||{})},{signal:controller.signal});
+    if(!response.ok)throw Error(await responseError(response,'文字请求失败'));
+    const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='';
+    while(true){
+      const item=await reader.read();if(turn!==chatEpoch)return;buffer+=decoder.decode(item.value||new Uint8Array(),{stream:!item.done});let position;
+      while((position=buffer.indexOf('\n'))>=0){
+        const line=buffer.slice(0,position);buffer=buffer.slice(position+1);if(!line)continue;const result=JSON.parse(line);
+        if(result.type==='text'){answer+=result.text;message.body.textContent=answer;window.characterForgeStage?.text(answer);chat.scrollTop=chat.scrollHeight;}
+        else if(result.type==='done'){completed=true;cancelled=Boolean(result.cancelled);window.characterForgeCharacter?.accept(result.character,cancelled);if(!cancelled)window.characterForgeStage?.delivery(result.character);turnProfile=result.character?.voice_profile||result.delivery||turnProfile;metrics.textContent=`首段文字 ${result.first_text_seconds??'—'} 秒 · 完整回答 ${result.elapsed_seconds??'—'} 秒${cancelled?' · 已停止':''}${!cancelled?' · 本条语气：'+profileLabels[turnProfile]:''}`;}
+        else if(result.type==='error')throw Error(result.error);
+      }
+      if(item.done)break;
+    }
+    if(turn!==chatEpoch)return;
+    if(!completed)throw Error('连接提前结束，请重试');
+    if(answer.trim()){
+      history.push({role:'assistant',content:answer,voice_profile:turnProfile});message.read.dataset.text=answer;message.read.dataset.profile=turnProfile;message.read.hidden=false;
+      if(voiceAuto.checked&&voiceReady&&!cancelled&&!closing&&voiceEpoch===voiceEpochAtTurn)speak(answer,roundTiming,turnProfile);
+    }else{history.pop();message.body.textContent='这次没有生成文字，请换个问法再试。';}
+  }catch(error){
+    if(turn!==chatEpoch)return;
+    if(!closing)metrics.textContent='文字生成出现问题：'+error.message;
+    if(answer){history.push({role:'assistant',content:answer});message.read.dataset.text=answer;message.read.hidden=false;}
+    else{history.pop();message.body.textContent=closing?'已退出。':'这次没有生成成功，请重新发送。';}
+  }finally{if(turn===chatEpoch){chatController=null;if(!closing)await window.characterForgeHistory?.save();busy=false;buttons();if(!closing)input.focus();}}
+};
+window.characterForgeTurn={interrupt:async(isCurrent=()=>true)=>{
+  const interruption=++chatEpoch;chatController?.abort();chatController=null;serverBusy=true;
+  try{
+  const pendingVoice=cancelVoice('已打断旧回复。');
+  const response=await post('/api/stop',{},{signal:AbortSignal.timeout(5000)});
+  if(!response.ok)throw Error('停止旧回答失败，请稍后重试。');
+  await pendingVoice;
+  const deadline=performance.now()+8000;
+  while(true){
+    if(!isCurrent()||interruption!==chatEpoch){if(interruption===chatEpoch)busy=false;return;}
+    const [text,voice]=await Promise.all([fetch('/api/status',{signal:AbortSignal.timeout(2000)}).then(r=>r.json()),fetch('/api/voice/status',{signal:AbortSignal.timeout(2000)}).then(r=>r.json())]);
+    if(!isCurrent()||interruption!==chatEpoch){if(interruption===chatEpoch)busy=false;return;}
+    serverBusy=Boolean(text.generation?.busy);
+    if(!serverBusy&&!voice.busy){busy=false;buttons();metrics.textContent='旧回答已打断，可以说下一轮。';return;}
+    if(performance.now()>deadline){busy=false;buttons();throw Error('旧任务仍在结束中；没有开始录音，稍后重试打断。');}
+    await new Promise(resolve=>setTimeout(resolve,100));
+  }
+  }catch(error){if(interruption===chatEpoch){busy=false;buttons();}throw error;}
+}};
+input.onkeydown=event=>{if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing){event.preventDefault();document.querySelector('#form').requestSubmit();}};
+stop.onclick=async()=>{cancelVoice();try{const response=await post('/api/stop');if(!response.ok)throw Error('停止请求未成功');metrics.textContent='已请求停止，正在等待本机任务释放…';await check();}catch(error){metrics.textContent='停止文字生成失败，请稍后重试。';}};
+shutdownButton.onclick=async()=>{
+  await window.characterForgeMic?.cancel();
+  if(closing)return;closing=true;ready=false;voiceAuto.checked=false;buttons();clearInterval(timer);clearInterval(voiceTimer);
+  await cancelVoice('正在停止声音…');
+  try{
+    const response=await post('/api/shutdown');if(!response.ok)throw Error(await responseError(response,'退出失败'));
+    statusEl.textContent='已请求退出；再次使用请双击启动入口';voiceStatus.textContent='已请求停止声音并释放显存。';
+  }catch(error){closing=false;buttons();statusEl.textContent='退出失败：'+error.message+'，可双击停止入口重试。';}
+};
+window.addEventListener('beforeunload',()=>{
+  voiceEpoch+=1;if(voiceController)voiceController.abort();releaseAudio();
+  fetch('/api/voice/stop',{method:'POST',headers:{'Content-Type':'application/json','X-Local-Token':token},body:'{}',keepalive:true}).catch(()=>{});
+});
+
+</script><script src="/character.js"></script><script src="/conversations.js"></script><script src="/microphone.js"></script><script src="/demo.js"></script><script src="/stage-timeline.js"></script><script src="/stage.js"></script></html>

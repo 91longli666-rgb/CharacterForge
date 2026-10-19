@@ -1,0 +1,8 @@
+{
+  "torch_threads": 4,
+  "generation_preset": "standard",
+  "codec_mode": "gpu_decoder",
+  "anger_mode": "anchored_legacy",
+  "predictor_mode": "cuda_graph",
+  "talker_mode": "layer_graph"
+}

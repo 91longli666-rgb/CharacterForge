@@ -1,0 +1,18 @@
+{
+  "reference": {
+    "file": "reference.wav",
+    "sha256": "830696bb1daa89e96b29d6a5cdef774ee3ddacd7f7a0bd2ae78c0f785021e76c"
+  },
+  "sarcastic": {
+    "file": "profiles/sarcastic.wav",
+    "sha256": "e31df161374b21d4c0c1291ad073165928334da11375ff789195dd9d69b5df63"
+  },
+  "angry": {
+    "file": "profiles/angry.wav",
+    "sha256": "c117a8ef546d6f5890b722fa66f9519f927fd0e7c84c77d41f4fb819ef95fe26"
+  },
+  "angry-v2": {
+    "file": "profiles/angry-v2.wav",
+    "sha256": "e594ec9fb86c26b2d554238b5bce9cf82396d9b6c7661e68a373917ab882489c"
+  }
+}

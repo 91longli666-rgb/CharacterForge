@@ -1,0 +1,802 @@
+{
+  "version": "1.0.0-cartman-demo-rc1",
+  "code_license": "MIT",
+  "character_voice_rights": "Uncleared third-party rights; intended noncommercial use is not permission",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 179,
+      "sha256": "dc415e921fa0d1a86348d9a3c9c34fb041e097c209f5dec1b68ed908e0e5f6a0"
+    },
+    {
+      "path": ".python-version",
+      "bytes": 8,
+      "sha256": "845c494b4a7e1a741db19fd42eda239d3ee03b65f08276008943349a3055c9cc"
+    },
+    {
+      "path": "ASSET-RIGHTS.md",
+      "bytes": 3517,
+      "sha256": "99d00df27de15a6a44527184b3f98ec927dd1c243b3e6c120a6281a711eda24b"
+    },
+    {
+      "path": "Check Demo.cmd",
+      "bytes": 232,
+      "sha256": "c8ab0be2160ee9488d6df0cca7cd0e028230917c31b4ce87ec95b19e8984fb19"
+    },
+    {
+      "path": "config/asset-provenance.json",
+      "bytes": 2075,
+      "sha256": "951eea853e45580c626aef9a2a796ad6e05514e5b9d3b934a7c53b9a68976bd1"
+    },
+    {
+      "path": "config/dialogue-runtime.json",
+      "bytes": 73,
+      "sha256": "99d1683afb86be259179010b02c93aac252e22b4e0ae0916cf64455ebef9f26f"
+    },
+    {
+      "path": "config/model-sources.json",
+      "bytes": 830,
+      "sha256": "568a6be1668e959cb90e0b6ce0f3c3af65ac0b2538c9a31a73496d86cd73b6e6"
+    },
+    {
+      "path": "config/ollama-source.json",
+      "bytes": 202,
+      "sha256": "0d434cd43874d86c76fbee68928d78aab596f0bef74be38130f303116aadffbd"
+    },
+    {
+      "path": "config/source-snapshot.json",
+      "bytes": 11734,
+      "sha256": "a31f8458cfbf02f593f5e7dc1f99522894548dd0902d20d354ac731dcf4d419e"
+    },
+    {
+      "path": "config/tts-model-files.json",
+      "bytes": 2209,
+      "sha256": "422e050d3e9ba4cfda86305b6ba8df154c2763ea206b6ad47e9d8a0d02108432"
+    },
+    {
+      "path": "config/voice-runtime.json",
+      "bytes": 192,
+      "sha256": "e49ef04f29dbde1b183169b5099a8f2246e2ed17783071edad3620879cc0ed01"
+    },
+    {
+      "path": "experiments/latency/asr_server.py",
+      "bytes": 8941,
+      "sha256": "fd42ad8ea6c6982e5a3061a01670f81470ab4f8aa53d73d0edc3fad390f41dcd"
+    },
+    {
+      "path": "experiments/latency/benchmark_p6.py",
+      "bytes": 4876,
+      "sha256": "d2b21d207d5bd0d718fa64c4920383c228405b69609dbc47665bd964f198da96"
+    },
+    {
+      "path": "experiments/latency/benchmark_p6_optimization.py",
+      "bytes": 6002,
+      "sha256": "fd68495a8bff657367932d74d8fa57f2f493efc5ca096dfe255f123e9a04b3aa"
+    },
+    {
+      "path": "experiments/latency/benchmark_pipeline.py",
+      "bytes": 4517,
+      "sha256": "043c6162bfbfe6c62db0090f5a4498659707146d1b3778657e5ced6a2b123c70"
+    },
+    {
+      "path": "experiments/latency/endpoint.py",
+      "bytes": 2058,
+      "sha256": "dd31e1650503e22661e62611d370c10747f48013665240f825a914e7f7242205"
+    },
+    {
+      "path": "experiments/latency/tests/test_asr.py",
+      "bytes": 3744,
+      "sha256": "42e5f1638e74b697d2f557feeb1c509eeafc39d46facfbdfbbb02cc717161f64"
+    },
+    {
+      "path": "experiments/latency/tests/test_input_devices.py",
+      "bytes": 2615,
+      "sha256": "b5a9e3c68d0127123b1efb9244d670528cda34b923c3b86574532814a9978fe0"
+    },
+    {
+      "path": "experiments/latency/tests/test_microphone_app.py",
+      "bytes": 3129,
+      "sha256": "d4a1699a1f6036373af8766c9ee99f4e1671bd615872fc8cb8da916bdd7a3663"
+    },
+    {
+      "path": "experiments/latency/tests/test_microphone_ui.cjs",
+      "bytes": 5754,
+      "sha256": "d7651bde6bb8fba9ab2a9cf3b3903e1616c002f41db9062c0daa6a75005af369"
+    },
+    {
+      "path": "experiments/latency/tests/test_realtime.py",
+      "bytes": 4295,
+      "sha256": "f7a9bd7c1b1ecbfc7c8f94cf461e648dce092f4faa6646d20bff7d1a99efdaf1"
+    },
+    {
+      "path": "experiments/latency/tests/test_realtime_ui.cjs",
+      "bytes": 8177,
+      "sha256": "4d84fd736819faa001ec5987de5ce391e7e25ff76254f75e8485ffdf3cf9bacf"
+    },
+    {
+      "path": "experiments/latency/windows_capture.py",
+      "bytes": 8496,
+      "sha256": "f43727e92e7eb57e274b763e216611374266b20e759cd73cb37a698f1ffd01dd"
+    },
+    {
+      "path": "experiments/voice/benchmark_anger.py",
+      "bytes": 2677,
+      "sha256": "8afb258a232bb95889176a1fc58920f1f94e07f209a955a862eb1be858ae4d76"
+    },
+    {
+      "path": "experiments/voice/benchmark_emotion.py",
+      "bytes": 2990,
+      "sha256": "8d75da0425e4909a86e2634482b5fcdd3b074d13f50115c262874413427c2368"
+    },
+    {
+      "path": "experiments/voice/benchmark_latency.py",
+      "bytes": 2924,
+      "sha256": "968516689a92a00e6f9563872a4585b930ccf7a319bd3cb91df56b5d1ca28fd0"
+    },
+    {
+      "path": "experiments/voice/benchmark_personality.py",
+      "bytes": 2915,
+      "sha256": "baefff827478fcb7b30efbdf72d8e7aef920d8fcef6cecf4e0f08d56be28be85"
+    },
+    {
+      "path": "experiments/voice/benchmark_reply_length.py",
+      "bytes": 2390,
+      "sha256": "0a577c181caa2232292265ad5c9e883495dbbd153d9786d27b6c1a4751c36b28"
+    },
+    {
+      "path": "experiments/voice/benchmark_voice.py",
+      "bytes": 5063,
+      "sha256": "42417f9642b3a669c98695157988594ba30ebc123437a939367dd03777cb93f2"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/adaptive_delivery.py",
+      "bytes": 3411,
+      "sha256": "3807caadc74a9e907f781586a7e2d83caea5134bbefbeca4f90bfc52b0bb5db1"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/anger_lab.py",
+      "bytes": 3282,
+      "sha256": "c74865d866d38b45014f7f549c4745062fc6ce027b09757ccbb4450ef45d5280"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/app.py",
+      "bytes": 35604,
+      "sha256": "2d14304419608f7594e0572542ee72e606e02c6f484912fd29ffc4e57a8dc3c3"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/character_memory.py",
+      "bytes": 4900,
+      "sha256": "fb3c1d9a14dcbc8c0fb9e5272939800480887fd52fc59e977e3639600b990bf6"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/character_runtime.py",
+      "bytes": 8780,
+      "sha256": "433b55d5743c84dfc86499e15d51881dad75aa79aac1a6950e21c6916d9454a3"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/conversation_store.py",
+      "bytes": 7268,
+      "sha256": "a86d132c7a1662a9bb3d93d95e0d0a7c38bfac5db9d546c61d954500fa307f06"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/demo_startup.py",
+      "bytes": 2860,
+      "sha256": "8a5c852640b08b9183c6d5c9c90e1c561068c9d36e6f5a6ebef7d769288a6713"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/dialogue_engine.py",
+      "bytes": 11426,
+      "sha256": "1188a8d51f84914b145a48108f652390d7f5eabefd7c124a1338ad810526c0d0"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/microphone_bridge.py",
+      "bytes": 6100,
+      "sha256": "48cf154bd255886fec6e9d9f59d527067ac850f9266b2069b62e0681fb14e225"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/personality.py",
+      "bytes": 2911,
+      "sha256": "1c5c1de74eb3b98d32f6e0d58e67a8f0055dec07fc43a5ec264ea690130a24b4"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/presentation.py",
+      "bytes": 1485,
+      "sha256": "1b529721d8fac906d17914e7b3b96df19b265961bbb54334485654681a56b595"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/voice_bridge.py",
+      "bytes": 18568,
+      "sha256": "c2429f50d8d072240974c21944f3ea0968f5670b97dc6aa6b5818577e45d9cd7"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/capture-worklet.js",
+      "bytes": 851,
+      "sha256": "0a633b28e890f089030900ed88072cee447d514f2dc6433320176f1af75f545e"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/character.js",
+      "bytes": 5340,
+      "sha256": "5d28799581717fc9d70c10306b2992b4b2811b403c80f63bc493e5b7f9480e02"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/continuous-audio.js",
+      "bytes": 4204,
+      "sha256": "90113e3c114a155b41e37fcdd169c39a690daa2e38a95cdf326ccd12e6a4a4ef"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/conversations.js",
+      "bytes": 7617,
+      "sha256": "f2f13ad25962bd003d3b36b4a54f47da04951e5b6d16eae761b9dc02622c5622"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/demo.js",
+      "bytes": 1805,
+      "sha256": "7605c4993b9dc70dd43f6a3ed806559c602ec6b73b2264a33aa86ed6fb648bbd"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/index.html",
+      "bytes": 36329,
+      "sha256": "0234b4cefa767868330ebb497c946b06698d4b0ea34634b54ef2878311164699"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/microphone.js",
+      "bytes": 15561,
+      "sha256": "27cfcf48b34d42549979356eb7628dcedfdfc3f52457a8a3f2df2860d682c81b"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/speech-motion.js",
+      "bytes": 4088,
+      "sha256": "64a91120465e6e766d57bb4c32e0627090e9e4d579099cdd48fcb8aef6e77e4b"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/stage-timeline.js",
+      "bytes": 1122,
+      "sha256": "473a934f32955fe869f00e614c66165c3b1cec03d5c8173c602b2b9fb18e094c"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/stage.css",
+      "bytes": 11014,
+      "sha256": "f73b005ef75906b19f0098d39e72d8031a2a03c11b293db116f5dbbabaa13aca"
+    },
+    {
+      "path": "experiments/voice/cartman3b_adapter/web/stage.js",
+      "bytes": 13453,
+      "sha256": "cdc6b2da79eee1d41b2d6798778f2b4f89029fd0f6d23e4abf9e8e6db0f0e4fe"
+    },
+    {
+      "path": "experiments/voice/codec_predictor.py",
+      "bytes": 7449,
+      "sha256": "86bbb72e9836b0e2118dea4b7aa2858f5e5fdc2af00d3751123d8509b7dacdaf"
+    },
+    {
+      "path": "experiments/voice/pcm_stream.py",
+      "bytes": 5097,
+      "sha256": "b590bec5d2aeefb5aecf38e25264655746ac64b5f1b0d0a1a7de41c07307a76b"
+    },
+    {
+      "path": "experiments/voice/qwen_provider.py",
+      "bytes": 29898,
+      "sha256": "f0612bf822b5663853c89f0d1aa2782a253b16a624bb2dfed04740e0e2632ebe"
+    },
+    {
+      "path": "experiments/voice/talker_launch.py",
+      "bytes": 7655,
+      "sha256": "ec60ba5bfe79b0c42b653228ed187dd4f7a54806784800e9e699d94d69b39b32"
+    },
+    {
+      "path": "experiments/voice/tests/test_adaptive_delivery.py",
+      "bytes": 2989,
+      "sha256": "0aa73343447249ba815da0e27d72f20fb686d9bf1a402e5e81f5e798b7de4fc6"
+    },
+    {
+      "path": "experiments/voice/tests/test_caption_timeline.cjs",
+      "bytes": 1530,
+      "sha256": "eff485e22d236b72f18b79b02cf8296e83a2d697709aa87c7d76138836a6ef2f"
+    },
+    {
+      "path": "experiments/voice/tests/test_character.py",
+      "bytes": 6299,
+      "sha256": "ff0ef361eed662b517914834cca311d6f82b4dfac192740b9b09f926036e85ed"
+    },
+    {
+      "path": "experiments/voice/tests/test_character_http.py",
+      "bytes": 4930,
+      "sha256": "806f08e13dcd8a32e7803accd4655b7aa4e75b95c1f555f19f6d9125a3798146"
+    },
+    {
+      "path": "experiments/voice/tests/test_character_ui.cjs",
+      "bytes": 5830,
+      "sha256": "5a8a037de0f0aa49428b6c53685df98114261d646b764fb83b00e0d0c09d89d1"
+    },
+    {
+      "path": "experiments/voice/tests/test_codec_predictor.py",
+      "bytes": 2965,
+      "sha256": "538571be2625f511050fe0eb92a89945274f547d5ff5d3b744083883ffba90d4"
+    },
+    {
+      "path": "experiments/voice/tests/test_continuous_audio.cjs",
+      "bytes": 2791,
+      "sha256": "3c003f56587faa1c5462c2eb58520a309938c549346d9c5fc8dcece1b845df8d"
+    },
+    {
+      "path": "experiments/voice/tests/test_demo.py",
+      "bytes": 3725,
+      "sha256": "40a899b3c65f20f8322ee8e9f7dac8add3bc25a2128f09dcd7c56e2896dce3b1"
+    },
+    {
+      "path": "experiments/voice/tests/test_demo_launcher.py",
+      "bytes": 1726,
+      "sha256": "76f836b1f77dc7d59975191bb7175215e13ee70b7aa76a82ea23d5547c14089b"
+    },
+    {
+      "path": "experiments/voice/tests/test_dialogue_memory.py",
+      "bytes": 1624,
+      "sha256": "a556a27beba55718a0084c746504116f2cde92e292567c46bcf3da6f8c89d8f6"
+    },
+    {
+      "path": "experiments/voice/tests/test_dialogue_settings.py",
+      "bytes": 2719,
+      "sha256": "96ba2ddd81dbb85f6ef319d84a84a1288f0e0bd985f3b18d0f40712e6c7b6cc1"
+    },
+    {
+      "path": "experiments/voice/tests/test_dialogue_startup.py",
+      "bytes": 4967,
+      "sha256": "53de1fb206207dc5487cae0f4d19cb6f045a07957e0961a6693e64e92d020c4d"
+    },
+    {
+      "path": "experiments/voice/tests/test_emotion_app.py",
+      "bytes": 7625,
+      "sha256": "10dc7f4b6287313091b0144826d5efdbf8304a9be45c4d17b759be842a45188c"
+    },
+    {
+      "path": "experiments/voice/tests/test_emotion_ui.cjs",
+      "bytes": 7198,
+      "sha256": "ea8eed0f123a1400508c069a07f54652d64ebdf4f0f1404d6e3f7f408b26daaa"
+    },
+    {
+      "path": "experiments/voice/tests/test_history_http.py",
+      "bytes": 2749,
+      "sha256": "64f3f399daf7c6b05096c0a94a292f80e197c046d404797e5ffb05f04162ba1e"
+    },
+    {
+      "path": "experiments/voice/tests/test_history_ui.cjs",
+      "bytes": 5281,
+      "sha256": "097ab38ed352dc3c8186f2087476ba7d0ffdbd0e31d1505f198eb9dcbb91c2a5"
+    },
+    {
+      "path": "experiments/voice/tests/test_presentation.py",
+      "bytes": 4319,
+      "sha256": "65a6d52067fb474d5bee5054318417894617ae91f44d7d7e0eda6bc683a3b2b1"
+    },
+    {
+      "path": "experiments/voice/tests/test_speech_motion.cjs",
+      "bytes": 5605,
+      "sha256": "9ea149bb066d24324ab2491bac6ed485276347f4bbf33327d166ef0b58239a8f"
+    },
+    {
+      "path": "experiments/voice/tests/test_stage_lifecycle.cjs",
+      "bytes": 5296,
+      "sha256": "d5278a24f2d879d672aad0df2bcd7c0033159bbbfe95726466cdcae500ae7653"
+    },
+    {
+      "path": "experiments/voice/tests/test_stream_bridge.py",
+      "bytes": 1948,
+      "sha256": "ef625a6cc0f7e40078358bcb944d306714668805345f86554cd771d1fd45d954"
+    },
+    {
+      "path": "experiments/voice/tests/test_stream_http.py",
+      "bytes": 4144,
+      "sha256": "ff928b37e778c78feb9056d4336822e4d6f828f9051c2acdc54a1a7b46f74209"
+    },
+    {
+      "path": "experiments/voice/tests/test_talker_launch.py",
+      "bytes": 2181,
+      "sha256": "4ae75d7cf34ca742b01e6cfa9ddd4b3226d4da960257acbbbc660f9d51c59e69"
+    },
+    {
+      "path": "experiments/voice/tests/test_voice_concurrency.py",
+      "bytes": 6428,
+      "sha256": "4cd1b23201f4be0ed7be999da2a55118304d1386106f18318c199d0a480b9623"
+    },
+    {
+      "path": "experiments/voice/verify_continuous.py",
+      "bytes": 4799,
+      "sha256": "0039c5a002ce13ae501ed34ff2c692cdcf0ded118e65832eb20ec5dea336d371"
+    },
+    {
+      "path": "experiments/voice/verify_integration.py",
+      "bytes": 17567,
+      "sha256": "8623e3c0eeda388b6b28eac52eca8f138f13c2805e2cc91d73c517678828f363"
+    },
+    {
+      "path": "experiments/voice/verify_personality_anger.py",
+      "bytes": 4891,
+      "sha256": "59d3288506f06413fa27bb19ea31d92feb16b2ddb3fa05c8865060cc38868969"
+    },
+    {
+      "path": "experiments/voice/voice_server.py",
+      "bytes": 13801,
+      "sha256": "b0c2f7eb4ae30ba9736f042004aa006a16abbf32e57fec772ed7ed12d87221a4"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1105,
+      "sha256": "be455f810ac95ef3869678d9e1347dacee3e85287c7ce93d0a5b817038f9ed6b"
+    },
+    {
+      "path": "licenses/av--av-16.1.0.dist-info__licenses__LICENSE.txt.txt",
+      "bytes": 1528,
+      "sha256": "f32ebcb6007dcc05eea369b3820e6391b0a7ef1ed763f30f1aca15dfdbacbe96"
+    },
+    {
+      "path": "licenses/certifi--certifi-2026.7.22.dist-info__licenses__LICENSE.txt",
+      "bytes": 989,
+      "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+    },
+    {
+      "path": "licenses/charset-normalizer--charset_normalizer-3.5.2.dist-info__licenses__LICENSE.txt",
+      "bytes": 1092,
+      "sha256": "18577485d3704f1a479ded8e573c0976cfed315fd2fd17983fa988da4c2f70d1"
+    },
+    {
+      "path": "licenses/colorama--colorama-0.4.6.dist-info__licenses__LICENSE.txt.txt",
+      "bytes": 1491,
+      "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318"
+    },
+    {
+      "path": "licenses/ctranslate2--upstream-LICENSE.txt",
+      "bytes": 1115,
+      "sha256": "54aa79d9fe3c09e67a16dcd95b9e88676405a6ec174efda31036983cf7672ecb"
+    },
+    {
+      "path": "licenses/faster-whisper--faster_whisper-1.2.1.dist-info__LICENSE.txt",
+      "bytes": 1064,
+      "sha256": "af6798135e729f8aa6c853936d037dfdea449734d26b8ea6a89805fca758c0d5"
+    },
+    {
+      "path": "licenses/filelock--filelock-4.2.0.dist-info__licenses__LICENSE.txt",
+      "bytes": 1088,
+      "sha256": "608c89d5060ae9921adccf3236695bc654a9946e12323ef6c021dfa04e294d48"
+    },
+    {
+      "path": "licenses/flatbuffers--upstream-LICENSE.txt",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "licenses/fsspec--fsspec-2026.9.0.dist-info__licenses__LICENSE.txt",
+      "bytes": 1513,
+      "sha256": "2dc35496ce53a7307915c008a844aad53e772b49b34cdd00445067691407ec94"
+    },
+    {
+      "path": "licenses/huggingface-hub--huggingface_hub-0.36.2.dist-info__licenses__LICENSE.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "licenses/idna--idna-3.20.dist-info__licenses__LICENSE.md.txt",
+      "bytes": 1541,
+      "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+    },
+    {
+      "path": "licenses/numpy--numpy-2.2.6.dist-info__LICENSE.txt.txt",
+      "bytes": 47709,
+      "sha256": "14256cc3a2c9d32ac284da96b937feb44f72dd90bee2317ac3020166846ad99d"
+    },
+    {
+      "path": "licenses/numpy--numpy___core__include__numpy__random__LICENSE.txt.txt",
+      "bytes": 1039,
+      "sha256": "d544761558b510866c21f7e8a2d5716fca76e0b98117e3b6b86314db7244d150"
+    },
+    {
+      "path": "licenses/numpy--numpy__ma__LICENSE.txt",
+      "bytes": 1616,
+      "sha256": "d78dbb208b80d92b4d333e41a4baae50d12444f46e53199fa7726a91de6e2da7"
+    },
+    {
+      "path": "licenses/numpy--numpy__random__LICENSE.md.txt",
+      "bytes": 3582,
+      "sha256": "b4bc2f4fa1c95778f1ed3dd8f14706bece399475b978f9f34b5d3cd72521b48a"
+    },
+    {
+      "path": "licenses/ollama-v0.40.4-LICENSE.txt",
+      "bytes": 1079,
+      "sha256": "95fa997c6886685f7c1d54ccdfb906519a7e0b33be58d5c1958708688abaa1fd"
+    },
+    {
+      "path": "licenses/onnxruntime--onnxruntime__LICENSE.txt",
+      "bytes": 1094,
+      "sha256": "c250d6278f0b47a6439fb7592b08b58a55eb9f535aa49a1db63211c3f982b674"
+    },
+    {
+      "path": "licenses/packaging--packaging-26.3.dist-info__licenses__LICENSE.APACHE.txt",
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "path": "licenses/packaging--packaging-26.3.dist-info__licenses__LICENSE.BSD.txt",
+      "bytes": 1344,
+      "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+    },
+    {
+      "path": "licenses/packaging--packaging-26.3.dist-info__licenses__LICENSE.txt",
+      "bytes": 197,
+      "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+    },
+    {
+      "path": "licenses/protobuf--protobuf-7.36.2.dist-info__LICENSE.txt",
+      "bytes": 1732,
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d"
+    },
+    {
+      "path": "licenses/PyYAML--pyyaml-6.0.3.dist-info__licenses__LICENSE.txt",
+      "bytes": 1101,
+      "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+    },
+    {
+      "path": "licenses/qwen-tts-0.1.1-LICENSE.txt",
+      "bytes": 11343,
+      "sha256": "a44a6081c73ad75f0255bb2bb5cab74ef1829565a895a24e53a4f11290ab7655"
+    },
+    {
+      "path": "licenses/qwen3-8b-LICENSE.txt",
+      "bytes": 11534,
+      "sha256": "b1e52d5a62118a2e437da900a17435b7fe914800bc1ee76e8eee04d3bd6a902e"
+    },
+    {
+      "path": "licenses/qwen3.5-4b-LICENSE.txt",
+      "bytes": 11544,
+      "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a"
+    },
+    {
+      "path": "licenses/requests--requests-2.34.2.dist-info__licenses__LICENSE.txt",
+      "bytes": 10142,
+      "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+    },
+    {
+      "path": "licenses/requests--requests-2.34.2.dist-info__licenses__NOTICE.txt",
+      "bytes": 38,
+      "sha256": "f5110972dedad2b4e9d314518daf3b7d72d6e02e499acd802181de6f74571dcc"
+    },
+    {
+      "path": "licenses/silero-vad--upstream-LICENSE.txt",
+      "bytes": 1075,
+      "sha256": "2e63e9a38b6e8fc0c7bc37ce174caca1862870856c6daf5697cfb785e925520b"
+    },
+    {
+      "path": "licenses/tokenizers--upstream-LICENSE.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "licenses/tqdm--tqdm-4.70.1.dist-info__licenses__LICENCE.txt",
+      "bytes": 1985,
+      "sha256": "fcff87c3a47ce8028a8512aa182d4fcf0ad1c90544ee75cf9b343684cac194de"
+    },
+    {
+      "path": "licenses/typing-extensions--typing_extensions-4.16.0.dist-info__licenses__LICENSE.txt",
+      "bytes": 13936,
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+    },
+    {
+      "path": "licenses/urllib3--urllib3-2.8.0.dist-info__licenses__LICENSE.txt.txt",
+      "bytes": 1093,
+      "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686"
+    },
+    {
+      "path": "private_assets/characters/active.json",
+      "bytes": 4736,
+      "sha256": "edbb37b9963232eb69d971061770ca43ce24927e9647825ae2c8fe71ac41272e"
+    },
+    {
+      "path": "private_assets/characters/avatar.svg",
+      "bytes": 5350,
+      "sha256": "acb7e2787ccbe4baedc6a6170f14ed3acc803d1a2f65e0750ffccbb5bf98b021"
+    },
+    {
+      "path": "private_assets/voice/emotion-profiles.json",
+      "bytes": 548,
+      "sha256": "8b904f1a3b5837ac26eccb31d722ac6eaad226525761ebc57ede27b8a6b8326c"
+    },
+    {
+      "path": "private_assets/voice/profiles/angry-v2.json",
+      "bytes": 934,
+      "sha256": "b1cf929c4e6d8d86678c17c0ab8943a877032c202bceef7b487bb5aba5f028d7"
+    },
+    {
+      "path": "private_assets/voice/profiles/angry-v2.wav",
+      "bytes": 98868,
+      "sha256": "e594ec9fb86c26b2d554238b5bce9cf82396d9b6c7661e68a373917ab882489c"
+    },
+    {
+      "path": "private_assets/voice/profiles/angry.json",
+      "bytes": 1295,
+      "sha256": "f426ee30edc8d33939a6f0e41dbc5e440b79d4e37c27c798f1eeca1d552567b0"
+    },
+    {
+      "path": "private_assets/voice/profiles/angry.wav",
+      "bytes": 194868,
+      "sha256": "c117a8ef546d6f5890b722fa66f9519f927fd0e7c84c77d41f4fb819ef95fe26"
+    },
+    {
+      "path": "private_assets/voice/profiles/sarcastic.json",
+      "bytes": 1290,
+      "sha256": "784932e27ee3439abc8b817f5fbf9dcf1f26933d0ee2bdde0daea72d38e04a8b"
+    },
+    {
+      "path": "private_assets/voice/profiles/sarcastic.wav",
+      "bytes": 154068,
+      "sha256": "e31df161374b21d4c0c1291ad073165928334da11375ff789195dd9d69b5df63"
+    },
+    {
+      "path": "private_assets/voice/reference.json",
+      "bytes": 1583,
+      "sha256": "085c6a6775748c94320790920ca1fb849114293a70e0dc4117f9ea94322ab254"
+    },
+    {
+      "path": "private_assets/voice/reference.wav",
+      "bytes": 191988,
+      "sha256": "830696bb1daa89e96b29d6a5cdef774ee3ddacd7f7a0bd2ae78c0f785021e76c"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4462,
+      "sha256": "43b160009ac19eceaac717a3e777566fe113ab92c918e44ebcece3cda172bbbf"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "bytes": 3643,
+      "sha256": "c4572467f4d38169f4555ef80ba5a4e5e5982c88647b16c7d75753660d4cdc79"
+    },
+    {
+      "path": "requirements/p0.txt",
+      "bytes": 193,
+      "sha256": "77ab28f952039380a27e025e7f053cda5fc13b4ad7b7f07af448e2f1bb320133"
+    },
+    {
+      "path": "requirements/p1.txt",
+      "bytes": 248,
+      "sha256": "bc5ee19c3caba16123746155d7df05234ae24205a48793921746d047576f4ac1"
+    },
+    {
+      "path": "requirements/p2-reference-tools.txt",
+      "bytes": 176,
+      "sha256": "094701e87c1b83b51cff684656d3ea0160a6e41161ae2c24bf2dda9e6fd05135"
+    },
+    {
+      "path": "requirements/p2-voice-lock.txt",
+      "bytes": 2074,
+      "sha256": "dc76b7a8fa382bfdc1fcc0c7ab28dbbb363faaaa281bb82e5baf137803e649fd"
+    },
+    {
+      "path": "requirements/p2-voice.txt",
+      "bytes": 233,
+      "sha256": "f5206a3cc2633107671848a861a4b07faef4e26cffe17e9ea31145b0a6371426"
+    },
+    {
+      "path": "requirements/p3-asr.txt",
+      "bytes": 245,
+      "sha256": "f03b1f555e49ad9a24a3835780e9eadb4edd559994643cbc35d94a18e6c52362"
+    },
+    {
+      "path": "requirements/p8-text-lock.txt",
+      "bytes": 600,
+      "sha256": "c1303eb2ee3d1952a93d7c8a645a873334492f35824bf05c798b0a0cc8769c9f"
+    },
+    {
+      "path": "requirements/p8-voice-lock.txt",
+      "bytes": 1830,
+      "sha256": "cb3c4e223013e7d278488562fe53c0d73e9225851a0da4d6df1c61bbf304b095"
+    },
+    {
+      "path": "run.py",
+      "bytes": 4641,
+      "sha256": "8606e3027a4507416b253e55f42a8c3dd2d217118f37984db2e7fc5a648b6fd4"
+    },
+    {
+      "path": "runtime/text/engine.py",
+      "bytes": 7397,
+      "sha256": "995486750f5ab20484e1ca80ffb3c45dfd1ecc45a7161d95923c2e397b2b24a7"
+    },
+    {
+      "path": "scripts/demo.py",
+      "bytes": 5735,
+      "sha256": "209a2125cc3cc9bbde33f7807a9e99e5eaeb57b256cce9844c218b627ba143e4"
+    },
+    {
+      "path": "scripts/ollama_service.py",
+      "bytes": 868,
+      "sha256": "bd107859338be70c7c080ec7d9e2fbcb345a0fee9f8dd812c944cb0b92fef270"
+    },
+    {
+      "path": "setup_demo.py",
+      "bytes": 5686,
+      "sha256": "d523be9f56d7677893538fcbf4769068510b58d3e689dc091918cdf995d92047"
+    },
+    {
+      "path": "src/characterforge/__init__.py",
+      "bytes": 79,
+      "sha256": "525d69127e78703365a55c99c51f8106c483d86d3480aa8da4e1d265ce14720d"
+    },
+    {
+      "path": "src/characterforge/config.py",
+      "bytes": 1202,
+      "sha256": "a1dfcc2405959c30851fa36da432f7710228e45fa7d23d6d353dbcfecbf32ec2"
+    },
+    {
+      "path": "src/characterforge/doctor.py",
+      "bytes": 4788,
+      "sha256": "1cfddefefc1790f9daf9c8fdbf33ed552fb28a2b2054c711226b907252acacba"
+    },
+    {
+      "path": "src/characterforge/llm/__init__.py",
+      "bytes": 37,
+      "sha256": "aff6ed195b411501f4f35d24ba9b37104ba93f3f138c7d25139b4ed300fd6990"
+    },
+    {
+      "path": "src/characterforge/llm/ollama.py",
+      "bytes": 7473,
+      "sha256": "c6f361571fff4339ad923d7a30507290ec1ca3beba8466044bb8b24378b70f41"
+    },
+    {
+      "path": "src/characterforge/llm/ollama_service.py",
+      "bytes": 10224,
+      "sha256": "dad30c29e10e8c1fb970ce05bde3deb202c6b9544bcc07b12db363977d97bebc"
+    },
+    {
+      "path": "src/characterforge/personality/__init__.py",
+      "bytes": 72,
+      "sha256": "baea0a3f1d3d0dce0b33ac32397097ea2b3b65120c95ca2921ccd1ebdef7bafc"
+    },
+    {
+      "path": "src/characterforge/personality/benchmark.py",
+      "bytes": 13410,
+      "sha256": "cb00c0c1ecfeda225f808bc846b462d03235e2cc0f29d4e2866bbc57320f7248"
+    },
+    {
+      "path": "src/characterforge/personality/card.py",
+      "bytes": 1447,
+      "sha256": "391f863c1c5a1fbe60bc8fbd9715b9abe2442e77d125bbdeb33e06deb0a02fdc"
+    },
+    {
+      "path": "src/characterforge/personality/cli.py",
+      "bytes": 4984,
+      "sha256": "c98d7e9b94206437dadb6d232370f6f45a51edc40bf22464a8670bee3a660f58"
+    },
+    {
+      "path": "src/characterforge/qos.py",
+      "bytes": 2112,
+      "sha256": "b7219b3510e4ce6289ae10a35f80cd47aced9b80d93798db7f2875f024800ba0"
+    },
+    {
+      "path": "Start Demo.cmd",
+      "bytes": 239,
+      "sha256": "1f86da593b94f8af90899156f5241c6b30a5b6fc8a63b947275c6a7b55ff5d01"
+    },
+    {
+      "path": "Stop Demo.cmd",
+      "bytes": 231,
+      "sha256": "7b74dc202d0845879bcc45c21cd09f43f4842e62e40edbc40e2e1bb8d003490c"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "bytes": 2485,
+      "sha256": "a5ecf8415e7604507075e7bd7c88789a9fcedffd55adf5e808f8cc8efdb3ce0e"
+    },
+    {
+      "path": "tools/verify_release.py",
+      "bytes": 3047,
+      "sha256": "ddeb370dd3295a2e0f34334fab33025f87e845bf2842ad59e9baffb11e600144"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 2891,
+      "sha256": "d5a64a530c32f667639277e8cdefe619b44ddd1b69c5778fee9cd993c48c3b39"
+    }
+  ]
+}

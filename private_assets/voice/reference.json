@@ -1,0 +1,29 @@
+{
+  "transcript": "The morning after I ate it, I went to the bathroom and my poop was all solid, like no water at all.",
+  "source": "https://giphy.com/clips/southpark-south-park-episode-4-season-19-EfEvdTwVEkwmv5ySTG",
+  "source_title": "Solid Poop",
+  "episode": "South Park, Season 19, Episode 4, You're Not Yelping",
+  "selection": {
+    "start_seconds": 2.05,
+    "end_seconds": 6.04,
+    "duration_seconds": 3.99,
+    "single_speaker_check": "Cartman speaking in extracted frames; official captions and independent offline transcription compared",
+    "background_music": "Not objectively separated or human-listening-validated"
+  },
+  "processing": {
+    "sample_rate": 24000,
+    "channels": 1,
+    "subtype": "PCM_16",
+    "gain_db": 13.621,
+    "peak_normalization": 0.8,
+    "denoise": false,
+    "pitch_shift": false,
+    "source_separation": false
+  },
+  "kind": "third_party_character_reference",
+  "sha256": "830696bb1daa89e96b29d6a5cdef774ee3ddacd7f7a0bd2ae78c0f785021e76c",
+  "original_file_sha256": "bf8c46a95f66ef3b021a831ebf79cf4e979fb7e45c65812c07f32aca2e5f5984",
+  "rights_notice": "Unofficial noncommercial fan research demo. South Park / Eric Cartman and original performances and recordings belong to their respective rights holders. No affiliation, endorsement, or third-party redistribution/voice-cloning permission is claimed. Not covered by the framework MIT license. See ASSET-RIGHTS.md.",
+  "rights_status": "No rightsholder redistribution or voice-cloning authorization obtained",
+  "intended_use": "noncommercial fan research; not a license grant"
+}

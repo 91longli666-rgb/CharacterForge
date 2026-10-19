@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 600" role="img" aria-label="Private Cartman cutout character">
+<metadata>Unofficial noncommercial fan research demo. South Park / Eric Cartman and original performances and recordings belong to their respective rights holders. No affiliation, endorsement, or third-party redistribution/voice-cloning permission is claimed. Not covered by the framework MIT license. See ASSET-RIGHTS.md.</metadata>
+<g id="avatar-body">
+<path d="M128 508L515 508L509 548L130 548Z" fill="#80462d"/>
+<path d="M129 538C167 533 251 535 319 542L319 559L115 558C111 550 118 543 129 538Z" fill="#191919"/>
+<path d="M321 542C391 534 475 533 512 538C524 542 532 551 529 558L321 559Z" fill="#191919"/>
+<path d="M179 334C134 342 105 377 91 422L94 493C128 526 226 542 321 540C426 544 513 526 546 494L549 423C533 377 506 345 463 333Z" fill="#e92b37" stroke="#7e2526" stroke-width="2"/>
+<path d="M321 414L324 538M122 400L116 465M518 400L525 465" fill="none" stroke="#a5202b" stroke-width="2"/>
+<path d="M102 412C84 401 69 413 65 429C59 447 68 465 83 473L113 476C126 473 130 463 126 454L118 443C117 431 111 417 102 412Z" fill="#ffdc28" stroke="#bd9d19" stroke-width="1.5"/>
+<path d="M539 411C557 402 573 414 577 431C581 448 572 465 557 473L527 476C514 473 511 463 515 454L524 443C524 429 530 416 539 411Z" fill="#ffdc28" stroke="#bd9d19" stroke-width="1.5"/>
+<ellipse cx="337" cy="445" rx="3.5" ry="4.5" fill="#241b18"/><ellipse cx="338" cy="481" rx="3.5" ry="4.5" fill="#241b18"/><ellipse cx="339" cy="518" rx="3.5" ry="4.5" fill="#241b18"/>
+</g>
+<g id="avatar-head">
+<path d="M114 250C112 178 187 126 315 124C437 122 524 175 529 250C541 342 470 426 323 430C177 430 102 349 114 250Z" fill="#ffdfb8" stroke="#b38a68" stroke-width="1.5"/>
+<path d="M113 250C124 164 199 104 315 103C433 101 514 159 529 249Q326 156 113 250Z" fill="#27b8bd"/>
+<path d="M113 249Q322 151 529 248L531 261Q321 165 112 262Z" fill="#ffdf29"/>
+<path d="M267 105C263 99 269 92 277 92C279 84 288 82 296 85C302 76 314 78 320 84C328 77 338 80 341 87C352 82 361 88 361 95C371 94 378 103 371 108L349 111L337 107L323 112L310 108L294 113L285 108L271 111Z" fill="#ffdf29"/>
+<g id="eye-left" class="eye-normal"><ellipse cx="272" cy="278" rx="47" ry="55" transform="rotate(8 272 278)" fill="#fff"/><ellipse cx="297" cy="278" rx="5" ry="6" fill="#171717"/></g>
+<g id="eye-right" class="eye-normal"><ellipse cx="368" cy="278" rx="47" ry="55" transform="rotate(-8 368 278)" fill="#fff"/><ellipse cx="343" cy="278" rx="5" ry="6" fill="#171717"/></g>
+<g id="angry-eyes">
+<path d="M223 251C250 260 281 275 306 281Q321 286 306 291C277 296 250 308 222 319" fill="none" stroke="#2b221e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M417 252C386 260 357 275 334 281Q319 286 334 292C360 301 389 310 418 319" fill="none" stroke="#2b221e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M228 230L298 212L285 221L230 235ZM342 212L412 230L410 235L355 221Z" fill="#2b221e"/>
+</g>
+<path class="brow-left" d="M235 225L301 243" fill="none" stroke="#211c17" stroke-width="3.5"/>
+<path class="brow-right" d="M339 243L405 225" fill="none" stroke="#211c17" stroke-width="3.5"/>
+<path class="eye-lid lid-left" d="M223 248L318 268L312 225L232 221Z" fill="#ffdfb8"/>
+<path class="eye-lid lid-right" d="M322 268L417 248L408 221L328 225Z" fill="#ffdfb8"/>
+<path id="mouth-line" d="M300 359Q320 352 340 360" fill="none" stroke="#36241d" stroke-width="2.5" stroke-linecap="round"/>
+<g id="mouth-open">
+<g class="lip-shape" id="mouth-narrow"><path d="M287 353C304 347 333 347 352 355L349 366C328 361 307 363 291 368Z" fill="#20191a"/><path d="M293 353L343 353L341 358L295 358Z" fill="#fff"/><path d="M307 353L307 358M320 353L320 358M333 353L333 358" fill="none" stroke="#302526" stroke-width="1.5"/></g>
+<g class="lip-shape" id="mouth-round"><path d="M307 342C318 336 334 340 337 351L338 369C335 383 313 383 306 372C301 364 302 350 307 342Z" fill="#20191a"/><path d="M310 343L329 343L330 350L309 350Z" fill="#fff"/><path d="M312 371Q322 365 332 373L327 378L315 378Z" fill="#aa5657"/></g>
+<g class="lip-shape" id="mouth-open-mid"><path d="M286 347C303 339 334 338 349 350C354 359 353 374 348 378C335 373 327 371 316 374C302 378 290 374 286 367Z" fill="#20191a"/><path d="M292 347L337 346L341 354L293 355Z" fill="#fff"/><path d="M305 347L305 355M318 346L318 355M331 346L331 354" fill="none" stroke="#302526" stroke-width="1.8"/></g>
+<g class="lip-shape" id="mouth-wide"><path d="M278 339C300 327 339 329 358 343C363 358 363 378 353 387C339 378 328 377 315 380C300 386 287 382 280 371Z" fill="#20191a"/><path d="M286 340L346 340L350 351L288 351Z" fill="#fff"/><path d="M300 339L300 351M317 338L317 351M334 339L334 351" fill="none" stroke="#302526" stroke-width="2"/><path d="M300 376Q321 366 342 379L334 382L315 383Z" fill="#a95556"/></g>
+<g class="lip-shape" id="mouth-teeth"><path d="M286 350Q319 341 354 352L352 368Q322 362 290 371Z" fill="#fff" stroke="#302526" stroke-width="2"/><path d="M289 359Q320 353 352 360M301 348L303 369M317 346L318 367M335 348L335 367" fill="none" stroke="#302526" stroke-width="1.7"/></g>
+</g>
+<path d="M155 350C201 393 260 412 322 412C386 412 447 392 488 350" fill="none" stroke="#785644" stroke-width="1.6"/>
+<path d="M294 391Q321 399 348 391" fill="none" stroke="#a27c5a" stroke-width="1.5"/>
+</g></svg>

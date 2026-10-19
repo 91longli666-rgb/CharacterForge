@@ -1,0 +1,25 @@
+{
+  "transcript": "Oh, wow. Poor people being arrested. What a rare occurrence.",
+  "source": "https://giphy.com/clips/southpark-south-park-episode-14-season-15-Q82w4H1uK5tqWSBLdV",
+  "source_title": "Poor People Being Arrested",
+  "episode": "Clips from South Park, Season 15, Episode 14, The Poor Kid",
+  "selection": {
+    "start_seconds": 0.0,
+    "end_seconds": 3.2,
+    "duration_seconds": 3.2
+  },
+  "processing": {
+    "sample_rate": 24000,
+    "channels": 1,
+    "gain_db": 9.109,
+    "peak_normalization": 0.8,
+    "pitch_shift": false,
+    "denoise": false
+  },
+  "kind": "third_party_character_reference",
+  "sha256": "e31df161374b21d4c0c1291ad073165928334da11375ff789195dd9d69b5df63",
+  "original_file_sha256": "15e5736cc6258d317ba6ee16615ceb60ad1f49841a626c546619a28bceb33680",
+  "rights_notice": "Unofficial noncommercial fan research demo. South Park / Eric Cartman and original performances and recordings belong to their respective rights holders. No affiliation, endorsement, or third-party redistribution/voice-cloning permission is claimed. Not covered by the framework MIT license. See ASSET-RIGHTS.md.",
+  "rights_status": "No rightsholder redistribution or voice-cloning authorization obtained",
+  "intended_use": "noncommercial fan research; not a license grant"
+}

@@ -1,0 +1,6 @@
+# Optional offline P2 reference analysis only; not microphone/P3 integration.
+yt-dlp==2026.8.19
+imageio-ffmpeg==0.6.0
+faster-whisper==1.2.1
+ctranslate2==4.8.3
+av==16.1.0

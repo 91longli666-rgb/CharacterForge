@@ -1,0 +1,3 @@
+# P0 uses Python standard library only.
+# Actual Python version: 3.12.15. pip version recorded in docs/p0-checkpoint.md.
+# LLM / ASR / TTS dependencies are deferred to their experiment stages.

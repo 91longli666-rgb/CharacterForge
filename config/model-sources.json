@@ -1,0 +1,26 @@
+{
+  "base": {
+    "repository": "unsloth/Llama-3.2-3B-Instruct-bnb-4bit",
+    "revision": "bb1d317a108579fb40e646af8924a5e7ec5604b1",
+    "destination": "runtime/text/models/base",
+    "license": "llama3.2"
+  },
+  "adapter": {
+    "repository": "Chun0927/eric_cartman_llama3.2_3b",
+    "revision": "0d49ea5018cc8bebbbde0f483737e2a6224c5b0b",
+    "destination": "runtime/text/models/adapter",
+    "license": "llama3.2"
+  },
+  "tts": {
+    "repository": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+    "revision": "5d83992436eae1d760afd27aff78a71d676296fc",
+    "destination": "models/Qwen3-TTS-12Hz-0.6B-Base",
+    "license": "apache-2.0"
+  },
+  "asr": {
+    "repository": "Systran/faster-whisper-small",
+    "revision": "536b0662742c02347bc0e980a01041f333bce120",
+    "destination": "models/faster-whisper-small",
+    "license": "mit"
+  }
+}
